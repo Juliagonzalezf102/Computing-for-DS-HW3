@@ -1,12 +1,25 @@
+#%%
 ##### Try to use map and reduce in the next 3 exercises
 # 1)
 # Create a function called "count_simba" that counts
 # the number of times that Simba appears in a list of
 # strings. Example: 
-# ["Simba and Nala are lions.", "I laugh in the face of danger.",
-#  "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."] 
+hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."] 
 #
+def count_simba(list):
+    count = 0
+    
+    for string in list:
+        count += string.count("Simba")
+    
+    return count
 
+def count_simba2(list):
+    
+
+count_simba(hk)
+
+#%%
 # 2)
 # Create a function called "get_day_month_year" that takes 
 # a list of datetimes.date and returns a pandas dataframe
