@@ -14,6 +14,8 @@ def count_simba(list):
     
     return count
 
+# set an alternative solution using a lambda function and map,
+# a much more compact solution
 def count_simba2(list):
     return sum(map(lambda x: x.count("Simba"), list))
 
@@ -27,8 +29,40 @@ count_simba2(hk)
 # with 3 columns (day, month, year) in which each of the rows
 # is an element of the input list and has as value its 
 # day, month, and year.
-# 
+#
 
+# import necesary packages
+import pandas as pd
+import datetime as dt
+import numpy as np
+
+# create a list of dates to test the function created below and print it to check
+dates = [dt.date(2022, 1, 1), dt.date(2022, 1, 2), dt.date(2022, 1, 3)]
+#print(dates[0])
+#print(dates[1])
+#print(dates[2])
+
+# create the function
+def get_day_month_year(list_of_dates):
+    
+    # create a dataframe with the dates and the columns day, month, year using the methods from the datetime package
+    df = pd.DataFrame(
+        {
+            "day": [date.day for date in list_of_dates],
+            "month": [date.month for date in list_of_dates],
+            "year": [date.year for date in list_of_dates]
+            },
+        
+        # set the index of the dataframe to be different than [0, 1, 2]
+        index = ['date1', 'date2', 'date3']
+        )
+    
+    return df
+
+# test the function
+print(get_day_month_year(dates))
+
+#%%
 # 3) 
 # Create a function called "compute_distance" that takes
 # a list of tuple pairs with latitude and longitude coordinates and 
@@ -37,6 +71,9 @@ count_simba2(hk)
 # HINT: You can use geopy.distance in order to compute the distance
 #
 
+
+
+#%%
 #################################################
 # 4)
 # Consider a list that each element can be an integer or
