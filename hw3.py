@@ -15,9 +15,10 @@ def count_simba(list):
     return count
 
 def count_simba2(list):
-    pass    
+    return sum(map(lambda x: x.count("Simba"), list))
 
-count_simba(hk)
+#count_simba(hk)
+count_simba2(hk)
 
 #%%
 # 2)
