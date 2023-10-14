@@ -1,4 +1,4 @@
-#%%
+ #%%
 ##### Try to use map and reduce in the next 3 exercises
 # 1)
 # Create a function called "count_simba" that counts
@@ -15,7 +15,7 @@ def count_simba(list):
     return count
 
 def count_simba2(list):
-    
+    pass    
 
 count_simba(hk)
 
