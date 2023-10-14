@@ -67,10 +67,18 @@ print(get_day_month_year(dates))
 # Create a function called "compute_distance" that takes
 # a list of tuple pairs with latitude and longitude coordinates and 
 # returns a list with the distance between the two pairs
-# example input: [((41.23,23.5), (41.5, 23.4)), ((52.38, 20.1),(52.3, 17.8))]
+example_input = [((41.23,23.5), (41.5, 23.4)), ((52.38, 20.1),(52.3, 17.8))]
 # HINT: You can use geopy.distance in order to compute the distance
 #
 
+def compute_distance(list_of_tuples):
+    import geopy.distance as gp
+    
+    distances = [gp.distance(pair[0], pair[1]).km for pair in list_of_tuples]
+    
+    return f'The distances are {distances} km'
+
+compute_distance(example_input)
 
 
 #%%
@@ -78,12 +86,27 @@ print(get_day_month_year(dates))
 # 4)
 # Consider a list that each element can be an integer or
 # a list that contains integers or more lists with integers
-# example: [[2], 4, 5, [1, [2], [3, 5, [7,8]], 10], 1]. 
+example = [[2], 4, 5, [1, [2], [3, 5, [7,8]], 10], 1]
 # create a recursive function called "sum_general_int_list"
 # that takes as input this type of list 
 # and returns the sum of all the integers within the lists
-# for instance for list_1=[[2], 3, [[1,2],5]] 
+# for instance for 
+list_1 = [[2], 3, [[1,2],5]] 
 # the result should be 13
 #
 
+def sum_general_int_list(list):
+    sum = 0
+    
+    for item in list:
+        if type(item) == int:
+            sum += item
+        else:
+            sum += sum_general_int_list(item)
+    
+    return sum
 
+
+print(f'Sum of list_1: {sum_general_int_list(list_1)} \nSum of example: {sum_general_int_list(example)}')
+
+# %%
