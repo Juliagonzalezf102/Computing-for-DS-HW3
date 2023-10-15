@@ -5,7 +5,8 @@
 # the number of times that Simba appears in a list of
 # strings. Example: 
 hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."] 
-#
+
+# we create the function by using the count method on each string in the list in a for loop
 def count_simba(list):
     count = 0
     
@@ -17,7 +18,12 @@ def count_simba(list):
 # set an alternative solution using a lambda function and map,
 # a much more compact solution
 def count_simba2(list):
-    return sum(map(lambda x: x.count("Simba"), list))
+    return sum(
+        map(
+            lambda x: x.count("Simba"), 
+            list
+            )
+        )
 
 #count_simba(hk)
 count_simba2(hk)
@@ -31,21 +37,25 @@ count_simba2(hk)
 # day, month, and year.
 #
 
-# import necesary packages
-import pandas as pd
-import datetime as dt
-import numpy as np
-
 # create a list of dates to test the function created below and print it to check
-dates = [dt.date(2022, 1, 1), dt.date(2022, 1, 2), dt.date(2022, 1, 3)]
+dates = [
+    dt.date(2022, 1, 1),
+    dt.date(2022, 1, 2),
+    dt.date(2022, 1, 3)
+    ]
 #print(dates[0])
 #print(dates[1])
 #print(dates[2])
 
 # create the function
 def get_day_month_year(list_of_dates):
+    # import necesary packages
+    import pandas as pd
+    import datetime as dt
+    import numpy as np
     
-    # create a dataframe with the dates and the columns day, month, year using the methods from the datetime package
+    # create a dataframe with the dates and the columns day, month, year 
+    # using the methods from the datetime package
     df = pd.DataFrame(
         {
             "day": [date.day for date in list_of_dates],
@@ -71,14 +81,23 @@ example_input = [((41.23,23.5), (41.5, 23.4)), ((52.38, 20.1),(52.3, 17.8))]
 # HINT: You can use geopy.distance in order to compute the distance
 #
 
+# we create the function by importing the geopy package and using the distance method
+# on each pair of tuples
 def compute_distance(list_of_tuples):
     import geopy.distance as gp
     
-    distances = [gp.distance(pair[0], pair[1]).km for pair in list_of_tuples]
+    distances = [
+        gp.distance(
+            pair[0],
+            pair[1]
+            )
+        .km for pair in list_of_tuples
+        ]
     
-    return f'The distances are {distances} km'
+    return f'The distances are {round(distances[0], 2)} and {round(distances[1], 2)} km'
 
-compute_distance(example_input)
+
+print(compute_distance(example_input))
 
 
 #%%
@@ -95,7 +114,10 @@ list_1 = [[2], 3, [[1,2],5]]
 # the result should be 13
 #
 
+# first we create a more readable function that sums the elements that are integers
+# and calls itself recursively for the elements that are lists
 def sum_general_int_list(list):
+    
     sum = 0
     
     for item in list:
@@ -106,7 +128,14 @@ def sum_general_int_list(list):
     
     return sum
 
+# now we create a more compact version that does the same but using a lambda function, 
+# but it is a bit less readable
+def sum_general_int_list2(list_of_elements):
+    return sum(sum_general_int_list(item) if isinstance(item, list) else item for item in list_of_elements)
+
 
 print(f'Sum of list_1: {sum_general_int_list(list_1)} \nSum of example: {sum_general_int_list(example)}')
+print('-------------------')
+print(f'Sum of list_1: {sum_general_int_list2(list_1)} \nSum of example: {sum_general_int_list2(example)}')
 
 # %%
