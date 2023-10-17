@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: GMR-lib1
+Version: 0.2
+Summary: A test library for GMR
+Author: Guillem Mirabent Rubinat
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
