@@ -6,17 +6,7 @@
 # strings. Example: 
 hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."] 
 
-# we create the function by using the count method on each string in the list in a for loop
-def count_simba(list):
-    count = 0
-    
-    for string in list:
-        count += string.count("Simba")
-    
-    return count
-
-# set an alternative solution using a lambda function and map,
-# a much more compact solution
+# we create the function by using the count method on each string in the list in a lambda function within the map function
 def count_simba2(list):
     return sum(
         map(

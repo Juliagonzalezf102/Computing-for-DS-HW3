@@ -5,16 +5,16 @@ The function below removes rows with NaN values in the specified subset of colum
 def nan_remover(data, columns):
     return data.dropna(axis = 0, subset = columns)
 
-'''
+#'''
 import pandas as pd
 import numpy as np
 from IPython.display import display
 
 test_df = pd.DataFrame({'a': [np.nan, 2, np.nan], 'b': [4, 5, np.nan], 'c': [7, 8, 9]}, index = ['first row', 'second row', 'third row'])
-#test_df = nan_remover(test_df, ['a', 'c'])
+test_df = nan_remover(test_df, ['a', 'c'])
 
 print(test_df)
-'''
+#'''
 
 '''
 The function below fills NaN values of the mean of their column in the specificed subset of columns.
