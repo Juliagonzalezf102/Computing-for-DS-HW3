@@ -1,4 +1,4 @@
- #%%
+#%%
 ##### Try to use map and reduce in the next 3 exercises
 # 1)
 # Create a function called "count_simba" that counts
@@ -7,7 +7,7 @@
 hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."] 
 
 # we create the function by using the count method on each string in the list in a lambda function within the map function
-def count_simba2(list):
+def count_simba(list):
     return sum(
         map(
             lambda x: x.count("Simba"), 
@@ -16,7 +16,7 @@ def count_simba2(list):
         )
 
 #count_simba(hk)
-count_simba2(hk)
+count_simba(hk)
 
 #%%
 # 2)
@@ -26,7 +26,7 @@ count_simba2(hk)
 # is an element of the input list and has as value its 
 # day, month, and year.
 #
-
+import datetime as dt
 # create a list of dates to test the function created below and print it to check
 dates = [
     dt.date(2022, 1, 1),
@@ -42,19 +42,28 @@ def get_day_month_year(list_of_dates):
     # import necesary packages
     import pandas as pd
     import datetime as dt
-    import numpy as np
     
     # create a dataframe with the dates and the columns day, month, year 
-    # using the methods from the datetime package
+    # using the methods from the datetime package in a map function
     df = pd.DataFrame(
-        {
-            "day": [date.day for date in list_of_dates],
-            "month": [date.month for date in list_of_dates],
-            "year": [date.year for date in list_of_dates]
-            },
+        map(
+            lambda x: [x.day, x.month, x.year], 
+            list_of_dates
+            ),
         
         # set the index of the dataframe to be different than [0, 1, 2]
-        index = ['date1', 'date2', 'date3']
+        index = [
+            'date1',
+            'date2',
+            'date3'
+            ],
+        
+        # set the column names to be 'day', 'month', 'year'
+        columns = [
+            'day',
+            'month',
+            'year'
+        ]
         )
     
     return df
@@ -72,23 +81,25 @@ example_input = [((41.23,23.5), (41.5, 23.4)), ((52.38, 20.1),(52.3, 17.8))]
 #
 
 # we create the function by importing the geopy package and using the distance method
-# on each pair of tuples
+# on each pair of tuples using the map function with a lambda inside it that iterates
+# over the list of tuples.
 def compute_distance(list_of_tuples):
     import geopy.distance as gp
     
-    distances = [
-        gp.distance(
-            pair[0],
-            pair[1]
+    distances = list(
+        map(
+            lambda x: gp.distance(
+                x[0],
+                x[1]
+                ).km,
+            (pair for pair in list_of_tuples)
             )
-        .km for pair in list_of_tuples
-        ]
+    )
     
+    # We return the distances formatted a little bit and rounded to 2 decimals
     return f'The distances are {round(distances[0], 2)} and {round(distances[1], 2)} km'
 
-
 print(compute_distance(example_input))
-
 
 #%%
 #################################################
