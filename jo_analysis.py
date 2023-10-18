@@ -1,10 +1,6 @@
 #%%
 import pandas as pd
-import numpy as np
 from  jolibhw3 import module1
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import roc_auc_score
 
 data = pd.read_csv('sample_diabetes_mellitus_data.csv')
 data.head()
@@ -16,8 +12,9 @@ data = module1.fillmean_nan(data, ['height', 'weight'])
 
 #%%
 # Calculating the mean diabetes_mellitus for each ethnicity
-mean_diabetes_mellitus = data.groupby('ethnicity')['diabetes_mellitus'].mean()
-data['ethn_value'] = data['ethnicity'].map(mean_diabetes_mellitus)
+# mean_diabetes_mellitus = data.groupby('ethnicity')['diabetes_mellitus'].mean()
+# data['ethn_value'] = data['ethnicity'].map(mean_diabetes_mellitus)
+data = module1.mean_encoding(data, 'ethnicity', 'diabetes_mellitus')
 
 gender_map = {'M':0, 'F':1}
 data = module1.mapping(data, 'gender', gender_map)

@@ -1,0 +1,8 @@
+LICENSE
+setup.py
+jolibhw3/__init__.py
+jolibhw3/module1.py
+jolibhw3.egg-info/PKG-INFO
+jolibhw3.egg-info/SOURCES.txt
+jolibhw3.egg-info/dependency_links.txt
+jolibhw3.egg-info/top_level.txt
