@@ -1,7 +1,9 @@
 # %%
-from ..hw3_updated import compute_distance
-from ..hw3_updated import get_day_month_year
-from ..hw3_updated import count_simba
+
+from hw3_updated import count_simba
+from hw3_updated import get_day_month_year
+from hw3_updated import compute_distance
+from hw3_updated import sum_general_int_list
 import unittest
 from pandas.testing import assert_series_equal
 import pandas as pd
@@ -89,5 +91,3 @@ class Sumgeneralintlist(unittest.TestCase):
         output = sum_general_int_list(input_list)
         expected_output = 0
         self.assertEqual(output, expected_output)
-
-# %%
