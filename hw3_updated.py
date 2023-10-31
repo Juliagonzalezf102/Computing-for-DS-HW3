@@ -8,7 +8,7 @@
 #  "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
 import datetime as dt
 hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata",
-      "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
+    "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
 
 # we create the function by using the count method on each string in the list in a lambda function within the map function
 

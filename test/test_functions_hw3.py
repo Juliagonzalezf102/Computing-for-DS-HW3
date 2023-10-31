@@ -9,6 +9,7 @@ import unittest
 import sys
 from pandas.testing import assert_series_equal
 import pandas as pd
+import datetime as dt
 
 
 class countsimba(unittest.TestCase):
@@ -21,7 +22,7 @@ class countsimba(unittest.TestCase):
 
     def test_count_simba_many_values(self):
         input_list = ["Hello Simba",
-                      "Good Morning, Simba", "Good Night, Simba"]
+                    "Good Morning, Simba", "Good Night, Simba"]
         output = count_simba(input_list)
         expected_output = 3
         self.assertEqual(output, expected_output)
@@ -34,7 +35,7 @@ class countsimba(unittest.TestCase):
 
     def test_count_simba_one_value(self):
         input_list = ["Hello Simba",
-                      "Good Morning", "Good Night"]
+                    "Good Morning", "Good Night"]
         output = count_simba(input_list)
         expected_output = 1
         self.assertEqual(output, expected_output)
@@ -53,7 +54,7 @@ class Getdaymonthyear(unittest.TestCase):
         ]
         output = get_day_month_year(input_list)
         expected_output = pd.dataframe({'day': [1, 2, 3, 13], 'month': [1, 1, 1, 8], 'year': [
-                                       2022, 2022, 2022, 2022]}, index=['date', 'date', 'date'])
+                                    2022, 2022, 2022, 2022]}, index=['date', 'date', 'date'])
         self.assertEqual(output, expected_output)
 
 
@@ -61,7 +62,7 @@ class Getdaymonthyear(unittest.TestCase):
 class Computedistance(unittest.TestCase):
     def test_compute_distance(self):
         input_list = [((41.23, 23.5), (41.5, 23.4)),
-                      ((52.38, 20.1), (52.3, 17.8))]
+                    ((52.38, 20.1), (52.3, 17.8))]
         output = compute_distance(input_list)
         expected_output = "The distances are 31.13 and 157.01 km"
         self.assertEqual(output, expected_output)
