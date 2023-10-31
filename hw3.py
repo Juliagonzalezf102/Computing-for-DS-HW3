@@ -46,7 +46,7 @@ dates = [
 # create the function
 
 
-def get_day_month_year(list_of_dates):
+#def get_day_month_year(list_of_dates):
     # import necesary packages
     import pandas as pd
     import datetime as dt
