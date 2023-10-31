@@ -1,3 +1,6 @@
+sys.path.append(
+    r'"C:\Users\julia\OneDrive\Documentos\GitHub\Computing-for-DS-HW3"')
+
 from hw3_updated import sum_general_int_list
 from hw3_updated import get_day_month_year
 from hw3_updated import compute_distance
@@ -6,8 +9,6 @@ import unittest
 import sys
 from pandas.testing import assert_series_equal
 import pandas as pd
-sys.path.append(
-    r'"C:\Users\julia\OneDrive\Documentos\GitHub\Computing-for-DS-HW3"')
 
 
 class countsimba(unittest.TestCase):
