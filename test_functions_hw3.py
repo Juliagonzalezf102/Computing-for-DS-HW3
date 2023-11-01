@@ -56,14 +56,22 @@ class Getdaymonthyear(unittest.TestCase):
                                        2022, 2022, 2022, 2022]}, index=['date', 'date', 'date', 'date'])
         self.assertTrue(expected_output.equals(output))
 
+    def test_get_day_month_year_empyt_list(self):
+
+        input_list = []
+        output = get_day_month_year(input_list)
+        expected_output = pd.DataFrame(
+            columns=['day', 'month', 'year'], index=[])
+        self.assertTrue(expected_output.equals(output))
+
 
 # TEST FUNCTION 3
 class Computedistance(unittest.TestCase):
     def test_compute_distance(self):
-        input_list = [((41.23, 23.5), (41.5, 23.4)),
-                      ((52.38, 20.1), (52.3, 17.8))]
+        input_list = [((39.51, 21.3), (25.3, 55.67)),
+                      ((32.31, 2.12), (52.38, 19.23))]
         output = compute_distance(input_list)
-        expected_output = "The distances are 31.13 and 157.01 km"
+        expected_output = "The distances are 3567.42 and 2622.91 km"
         self.assertEqual(output, expected_output)
 
     def test_compute_distance_0(self):
@@ -73,7 +81,8 @@ class Computedistance(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
     def test_compute_distance_missing(self):
-        input_list = [((0, 0)), ((0, 0), (0, 0))]
+        input_list = [((39.51, 21.3), (25.3, 55.67)),
+                      ((32.31, 2.12))]
         self.assertRaises(ValueError)
 
 
