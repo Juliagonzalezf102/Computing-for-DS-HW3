@@ -100,7 +100,7 @@ def compute_distance(list_of_tuples):
         )
     )
     # We return the distances formatted a little bit and rounded to 2 decimals
-    return f'The distances are {round(distances[0], 2)} and {round(distances[1], 2)} km'
+    return list(map(lambda x: round(x, 2), distances))
 
 '''
 print(compute_distance(example_input))

@@ -62,14 +62,33 @@ class countsimba(unittest.TestCase):
         output = count_simba(input_list)
         expected_output = 5
         self.assertEqual(output, expected_output)
+    
+    def test_ints(self):
+        input_list = [1, 2, 3, 4, 5, "Simba"]
+        self.assertRaises(AttributeError)
+    
+    def test_floats(self):
+        input_list = [1.5, 2.5, 3.5, 4.5, 5.5, 'Simba']
+        self.assertRaises(AttributeError)
+    
+    def test_boolean(self):
+        input_list = [True, False, True, False, "Simba"]
+        self.assertRaises(AttributeError)
+    
+    def test_lists(self):
+        input_list = [['Simba'], ['Simba']]
+        self.assertRaises(AttributeError)
+    
+    def test_nolist(self):
+        input_list = "Simba"
+        self.assertRaises(AttributeError)
 
 
 # TEST FUNCTION 2
 
 class Getdaymonthyear(unittest.TestCase):
-
-    def test_get_day_month_year(self):
-
+    
+    def test_basic(self):
         input_list = [
             dt.date(2022, 1, 1),
             dt.date(2022, 1, 2),
@@ -80,45 +99,95 @@ class Getdaymonthyear(unittest.TestCase):
         expected_output = pd.DataFrame({'day': [1, 2, 3, 13], 'month': [1, 1, 1, 8], 'year': [
                                     2022, 2022, 2022, 2022]}, index=['date', 'date', 'date', 'date'])
         self.assertTrue(expected_output.equals(output))
-
-    def test_get_day_month_year_empyt_list(self):
-
+    
+    def test_empyt_list(self):
         input_list = []
         output = get_day_month_year(input_list)
         expected_output = pd.DataFrame(
             columns=['day', 'month', 'year'], index=[])
         self.assertTrue(expected_output.equals(output))
+    
+    def test_string(self):
+        input_list = ["hello", "world"]
+        self.assertRaises(AttributeError)
+    
+    def test_int(self):
+        input = 1
+        self.assertRaises(AttributeError)
+    
+    def test_wrong_format_date(self):
+        input_list = [dt.date(2022, 1, 1),
+                    dt.date(2022, 1, 2),
+                    "2022-01-03",
+                    dt.date(2022, 8, 13)
+                ]
+        self.assertRaises(AttributeError)
 
 
 # TEST FUNCTION 3
 class Computedistance(unittest.TestCase):
-    def test_compute_distance(self):
+    
+    def test_basic(self):
         input_list = [((39.51, 21.3), (25.3, 55.67)),
                     ((32.31, 2.12), (52.38, 19.23))]
         output = compute_distance(input_list)
-        expected_output = "The distances are 3567.42 and 2622.91 km"
+        expected_output = [3567.42, 2622.91]
         self.assertEqual(output, expected_output)
-
-    def test_compute_distance_0(self):
+    
+    def test_0(self):
         input_list = [((0, 0), (0, 0)), ((0, 0), (0, 0))]
         output = compute_distance(input_list)
-        expected_output = "The distances are 0.0 and 0.0 km"
+        expected_output = [0, 0]
         self.assertEqual(output, expected_output)
-
-    def test_compute_distance_missing(self):
+    
+    def test_missing(self):
         input_list = [((39.51, 21.3), (25.3, 55.67)),
                     ((32.31, 2.12))]
         self.assertRaises(ValueError)
+    
+    def test_string(self):
+        input_list = ["hello", "world"]
+        self.assertRaises(AttributeError)
+    
+    def test_unic_tuple(self):
+        input_list = [((39.51, 21.3), (25.3, 55.67))]
+        output = compute_distance(input_list)
+        expected_output = [3567.42]
+        self.assertEqual(output, expected_output)
+    
+    def test_empty_tuple(self):
+        input_list = [((), ())]
+        self.assertRaises(ValueError)
+    
+    def test_wrong_format(self):
+        input_list = [((39.51, 21.3), (25.3, 55.67)),
+                    ((32.31, 2.12), [52.38, 19.23])]
+        self.assertRaises(AttributeError)
+    
+    def test_wrong_format_2(self):
+        input_list = [((39.51, 21.3), (25.3, 55.67, 78))]
+        self.assertRaises(AttributeError)
+    
+    def test_wrong_format_3(self):
+        input_list = [((39.51, 21.3), 25.3, 55.67)]
+        self.assertRaises(AttributeError)
+    
+    def test_plus2_tuples(self):
+        input_list = [((39.51, 21.3), (25.3, 55.67)), ((0, 0), (0, 0)), ((32.31, 2.12), (52.38, 19.23)), ((32.31, 2.12), (52.38, 19.23)), ((0, 0), (0, 0))]
+        output = compute_distance(input_list)
+        expected_output = [3567.42, 0, 2622.91, 2622.91, 0]
+    
 
 
 # TEST FUNCTION 4
 class Sumgeneralintlist(unittest.TestCase):
+    
     def test_normal(self):
         input_list = [[1, 2, 3], 4, [5, [6, 7], 8, 9]]
         output = sum_general_int_list(input_list)
         expected_output = 45
         self.assertEqual(output, expected_output)
-
+    
     def test_no_values(self):
         input_list = []
         output = sum_general_int_list(input_list)
@@ -136,3 +205,23 @@ class Sumgeneralintlist(unittest.TestCase):
         output = sum_general_int_list(input_list)
         expected_output = 31
         self.assertEqual(output, expected_output)
+    
+    def test_negative_numbers(self):
+        input_list = [[-1, -2, -3], -4, [-5, [-6, -7], -8, -9]]
+        output = sum_general_int_list(input_list)
+        expected_output = -45
+        self.assertEqual(output, expected_output)
+    
+    def test_floats(self):
+        input_list = [[1.5, 2.5, 3.5], 4.5, [5.5, [6.5, 7.5], 8.5, 9.5]]
+        output = sum_general_int_list(input_list)
+        expected_output = 49.5
+        self.assertEqual(output, expected_output)
+    
+    def test_strings(self):
+        input_list = [[1, 2, 3], 4, [5, [6, 7], 8, 9], "hello", "world"]
+        self.assertRaises(TypeError)
+    
+    def test_boolean(self):
+        input_list = [[1, 2, 3], 4, [5, [6, 7], 8, 9], True, False]
+        self.assertRaises(TypeError)
