@@ -6,9 +6,9 @@
 # strings. Example:
 # ["Simba and Nala are lions.", "I laugh in the face of danger.",
 #  "Hakuna matata", "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
-import datetime as dt
-hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata",
-      "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
+#import datetime as dt
+#hk = ["Simba and Nala are lions.", "I laugh in the face of danger.", "Hakuna matata",
+#    "Timon, Pumba and Simba are friends, but Simba could eat the other two."]
 
 # we create the function by using the count method on each string in the list in a lambda function within the map function
 
@@ -23,7 +23,7 @@ def count_simba(list):
 
 
 # count_simba(hk)
-count_simba(hk)
+#count_simba(hk)
 
 # %%
 # 2)
@@ -34,12 +34,14 @@ count_simba(hk)
 # day, month, and year.
 #
 # create a list of dates to test the function created below and print it to check
+'''
 dates = [
     dt.date(2022, 1, 1),
     dt.date(2022, 1, 2),
     dt.date(2022, 1, 3),
     dt.date(2022, 8, 13)
 ]
+'''
 # print(dates[0])
 # print(dates[1])
 # print(dates[2])
@@ -51,7 +53,6 @@ def get_day_month_year(list_of_dates):
     # import necesary packages
     import pandas as pd
     import datetime as dt
-
     # create a dataframe with the dates and the columns day, month, year
     # using the methods from the datetime package in a map function
     df = pd.DataFrame(
@@ -59,11 +60,8 @@ def get_day_month_year(list_of_dates):
             lambda x: [x.day, x.month, x.year],
             list_of_dates
         ),
-
         # set the index of the dataframe to be different than [0, 1, 2]
-        index=['date' for i in range(len(dates))],
-
-
+        index=['date' for i in range(len(list_of_dates))],
         # set the column names to be 'day', 'month', 'year'
         columns=[
             'day',
@@ -71,18 +69,17 @@ def get_day_month_year(list_of_dates):
             'year'
         ]
     )
-
     return df
 
 
 # test the function
-print(get_day_month_year(dates))
+#print(get_day_month_year(dates))
 # %%
 # 3)
 # Create a function called "compute_distance" that takes
 # a list of tuple pairs with latitude and longitude coordinates and
 # returns a list with the distance between the two pairs
-example_input = [((41.23, 23.5), (41.5, 23.4)), ((52.38, 20.1), (52.3, 17.8))]
+#example_input = [((41.23, 23.5), (41.5, 23.4)), ((52.38, 20.1), (52.3, 17.8))]
 # HINT: You can use geopy.distance in order to compute the distance
 #
 
@@ -93,7 +90,6 @@ example_input = [((41.23, 23.5), (41.5, 23.4)), ((52.38, 20.1), (52.3, 17.8))]
 
 def compute_distance(list_of_tuples):
     import geopy.distance as gp
-
     distances = list(
         map(
             lambda x: gp.distance(
@@ -103,13 +99,12 @@ def compute_distance(list_of_tuples):
             (pair for pair in list_of_tuples)
         )
     )
-
     # We return the distances formatted a little bit and rounded to 2 decimals
-    return f'The distances are {round(distances[0], 2)} and {round(distances[1], 2)} km'
+    return list(map(lambda x: round(x, 2), distances))
 
-
+'''
 print(compute_distance(example_input))
-
+'''
 
 # %%
 # 4)
@@ -131,7 +126,8 @@ def sum_general_int_list(lst):
             total += i
     return total
 
-
+'''
 list_1 = [[2], 4, 5, [1, [2], [3, 5, [7, 8]], 10], 1]
 result = sum_general_int_list(list_1)
 print(result)
+'''

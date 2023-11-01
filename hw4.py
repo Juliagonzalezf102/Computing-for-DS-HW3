@@ -67,7 +67,7 @@ class Patient:
             for symptom in ['fever', 'cough', 'anosmia']:
                 if symptom in self.symptoms:
                     probability += 0.1
-        return probability
+        return round(probability, 2)
 
 
 # %%
@@ -106,10 +106,14 @@ class Deck:
         if self.cards:
             card = self.cards.pop()
             print(f"You drew the {card.value} of {card.suit}")
-        
+            return f"{card.value} of {card.suit}"
+
         else:
             print("No more cards to draw.")
+            return "No more cards to draw."
 
+deck = Deck()
+print(deck.draw())
 
 #%%
 
@@ -163,7 +167,7 @@ class Triangle(PlaneFigure):
             condition3 = c1 + c2 > base
 
             # Check the condition for height
-            height_condition = height < min(c1, c2)
+            height_condition = height <= min(c1, c2)
 
             # Return True if all conditions are satisfied and False otherwise
             return condition1 and condition2 and condition3 and height_condition
