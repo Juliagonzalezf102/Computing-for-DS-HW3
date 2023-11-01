@@ -89,8 +89,14 @@ class TestShape(unittest.TestCase):
         self.assertEqual(shape.compute_perimeter(), 12)
     
     def test_triangle_null(self):
-        shape = Triangle(base = 0, c1 = 0, c2 = 0, h = 0)
-        self.assertRaise(ValueError)
+        self.assertRaises(ValueError, Triangle, base = 0, c1 = 0, c2 = 0, h = 0)
+        #    shape = Triangle(base = 0, c1 = 0, c2 = 0, h = 0)
+    
+    def test_triangle_not_valid(self):
+        self.assertRaises(ValueError, Triangle, base = 3, c1 = 4, c2 = 5, h = 10)
+    
+    def test_triangle_not_valid2(self):
+        self.assertRaises(ValueError, Triangle, base = 7, c1 = 4, c2 = 2, h = 1)
     
     def test_rectangle(self):
         shape = Rectangle(4, 5)
@@ -98,12 +104,12 @@ class TestShape(unittest.TestCase):
         self.assertEqual(shape.compute_perimeter(), 18)
     
     def test_rectangle_null(self):
-        shape = Rectangle(0, 0)
-        self.assertRaise(ValueError)
+        #shape = Rectangle(0, 0)
+        self.assertRaises(ValueError, Rectangle, 0, 0)
     
     def test_circle_null(self):
-        shape = Circle(0)
-        self.assertRaise(ValueError)
+        #shape = Circle(0)
+        self.assertRaises(ValueError, Circle, 0)
     
     def test_circle(self):
         shape = Circle(7)
