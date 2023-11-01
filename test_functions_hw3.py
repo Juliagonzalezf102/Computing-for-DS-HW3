@@ -12,7 +12,7 @@ import pandas as pd
 
 class countsimba(unittest.TestCase):
 
-    def test_count_simba_no_values(self):
+    def test_no_values(self):
         input_list = ["Hello World", "Good Morning", "Good Night"]
         output = count_simba(input_list)
         expected_output = 0
@@ -88,14 +88,26 @@ class Computedistance(unittest.TestCase):
 
 # TEST FUNCTION 4
 class Sumgeneralintlist(unittest.TestCase):
-    def test_general_int_list(self):
+    def test_normal(self):
         input_list = [[1, 2, 3], 4, [5, [6, 7], 8, 9]]
         output = sum_general_int_list(input_list)
         expected_output = 45
         self.assertEqual(output, expected_output)
 
-    def test_general_int_list_no_values(self):
+    def test_no_values(self):
         input_list = []
         output = sum_general_int_list(input_list)
         expected_output = 0
+        self.assertEqual(output, expected_output)
+    
+    def test_roger_example(self):
+        input_list = [[2], 3, [[1,2],5]]
+        output = sum_general_int_list(input_list)
+        expected_output = 13
+        self.assertEqual(output, expected_output)
+    
+    def test_combined_list(self):
+        input_list = [[1], 6, [[[3, 0], 2], []], [[[[[]]]], 10], 5, 0, [[0], [[[[[0]]], [[4]]]]]]
+        output = sum_general_int_list(input_list)
+        expected_output = 31
         self.assertEqual(output, expected_output)
