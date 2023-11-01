@@ -18,24 +18,49 @@ class countsimba(unittest.TestCase):
         expected_output = 0
         self.assertEqual(output, expected_output)
 
-    def test_count_simba_many_values(self):
+    def test_many_values(self):
         input_list = ["Hello Simba",
                     "Good Morning, Simba", "Good Night, Simba"]
         output = count_simba(input_list)
         expected_output = 3
         self.assertEqual(output, expected_output)
 
-    def test_count_simba_empty_list(self):
+    def test_empty_list(self):
         input_list = []
         output = count_simba(input_list)
         expected_output = 0
         self.assertEqual(output, expected_output)
 
-    def test_count_simba_one_value(self):
+    def test_one_value(self):
         input_list = ["Hello Simba",
                     "Good Morning", "Good Night"]
         output = count_simba(input_list)
         expected_output = 1
+        self.assertEqual(output, expected_output)
+    
+    def test_multiple_simbas_same_string(self):
+        input_list = ["Simba, Simba, Simba, my name's Simba", "do you know Simba?", "Simba is such a nice version of Simba",
+                    "i know, i know him", "", "Simba is the best Simba"]
+        output = count_simba(input_list)
+        expected_output = 9
+        self.assertEqual(output, expected_output)
+    
+    def test_simba_not_alone(self):
+        input_list = ["Simbaland", "vamos a hacer un Simbagar"]
+        output = count_simba(input_list)
+        expected_output = 2
+        self.assertEqual(output, expected_output)
+    
+    def test_simba_lowercase(self):
+        input_list = ["simba", "simba", "simba"]
+        output = count_simba(input_list)
+        expected_output = 0
+        self.assertEqual(output, expected_output)
+    
+    def test_Simba_siamese(self):
+        input_list = ["SimbaSimbaSimba", "I SimbaSimba"]
+        output = count_simba(input_list)
+        expected_output = 5
         self.assertEqual(output, expected_output)
 
 
