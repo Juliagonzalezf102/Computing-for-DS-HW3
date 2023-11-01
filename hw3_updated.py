@@ -61,7 +61,7 @@ def get_day_month_year(list_of_dates):
         ),
 
         # set the index of the dataframe to be different than [0, 1, 2]
-        index=['date' for i in range(len(dates))],
+        index=['date' for i in range(len(list_of_dates))],
 
 
         # set the column names to be 'day', 'month', 'year'
@@ -76,7 +76,10 @@ def get_day_month_year(list_of_dates):
 
 
 # test the function
-print(get_day_month_year(dates))
+
+dates_2 = []
+# print(get_day_month_year(dates))
+print(get_day_month_year(dates_2))
 # %%
 # 3)
 # Create a function called "compute_distance" that takes
