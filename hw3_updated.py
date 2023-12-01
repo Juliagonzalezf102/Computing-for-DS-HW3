@@ -77,9 +77,8 @@ def get_day_month_year(list_of_dates):
 
 # test the function
 
-dates_2 = []
-# print(get_day_month_year(dates))
-print(get_day_month_year(dates_2))
+
+print(get_day_month_year(dates))
 # %%
 # 3)
 # Create a function called "compute_distance" that takes
