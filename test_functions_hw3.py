@@ -109,11 +109,11 @@ class Getdaymonthyear(unittest.TestCase):
     
     def test_string(self):
         input_list = ["hello", "world"]
-        self.assertRaises(AttributeError)
+        self.assertRaises(AttributeError, get_day_month_year, input_list)
     
     def test_int(self):
-        input = 1
-        self.assertRaises(AttributeError)
+        input = [1]
+        self.assertRaises(AttributeError, get_day_month_year, input)
     
     def test_wrong_format_date(self):
         input_list = [dt.date(2022, 1, 1),
